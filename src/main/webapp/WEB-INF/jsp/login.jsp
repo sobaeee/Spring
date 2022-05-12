@@ -12,7 +12,8 @@
 <link rel="stylesheet" type="text/css" href="resources/style.css">
 <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.1.0/css/bootstrap.min.css">
 <script src="webjars/jquery/3.6.0/dist/jquery.min.js"></script>
-<!-- servlet-context.mxl(경로: scr-main-webapp-WEBINF-spring-appservlet) 17번째줄 추가 -->
+<!-- servlet-context.mxl(경로: scr-main-webapp-WEBINF-spring-appservlet)
+<resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/" /> 추가 -->
 </head>
 
 <body class="page01 tC">
