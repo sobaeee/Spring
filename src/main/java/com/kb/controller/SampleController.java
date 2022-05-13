@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kb.domain.SampleDTO;
@@ -29,9 +33,12 @@ public class SampleController {
 	public void basic() {
 		log.info("-----------------------");
 	}
+	
 	@GetMapping("basicOnlyGet") //get방식만 처리하겠다
 	public void basicGet() {
 		log.info("-----------------------GET");
+		
+		//리턴 값이 void. [/WEB-INF/jsp/sample/basicOnlyGet.jsp] 그냥 주소에 대한 jsp파일을 찾는다. 디렉토리는 sample이 된다.
 	}
 	
 	/*
@@ -43,6 +50,7 @@ public class SampleController {
 	public String ex01(SampleDTO dto) {
 		log.info(dto);
 		return "ex01"; //처음엔 빈값이 나오지만 상단에 ?name=키보드&age=10 을 붙여 값을 던져주면 console 창에 값이 뜬다.
+		//리턴값이 String. [/WEB-INF/jsp/ex01.jsp]  String과 void의 차이로는 return 값이 있고 없고도 있음.
 	}
 	
 	@GetMapping("/ex02")
@@ -102,4 +110,26 @@ public class SampleController {
 		//home.jsp에 ${age} 을 넣자 값이 get방식으로 넘어간 것은 확인이 되었다.
 		//한글이 깨져서 일단 나이만 넣어둠.
 	}
+	
+	@GetMapping("/ex08")
+	public @ResponseBody SampleDTO ex08() {
+		log.info("/ex08.............");
+		SampleDTO dto = new SampleDTO();
+		dto.setName("아하");
+		dto.setAge(10);
+		
+		return dto;
+	}
+	
+	@GetMapping("/ex09")
+	public ResponseEntity<String> ex09() {
+		String msg = "{\"name\":\"아하\",\"age\":10}";
+		
+		HttpHeaders header = new HttpHeaders();
+		header.add("content-type", "application/json;charset=UTF-8");
+		
+		return new ResponseEntity<String>(msg, header, HttpStatus.OK);
+	}
+	
+	
 }
