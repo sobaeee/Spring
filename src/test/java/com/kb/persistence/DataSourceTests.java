@@ -18,6 +18,7 @@ import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class) //junit 버전이 4.12여야함. + lib에 spring-test 추가해야함
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+//↑이걸로 끌고온다.
 @Log4j //이게 있어야 log.info 사용 가능.
 public class DataSourceTests {
 	

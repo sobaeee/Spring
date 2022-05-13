@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kb.mapper.TimeMapper">
+<!-- 자바 파일과 xml을 연결 시켜줘야함. -->
+	<select id="getTime2" resultType="string">
+	<!-- 아이디를 전달해서 결과값을 받음. -->
+		SELECT now()
+	</select>
+</mapper>
