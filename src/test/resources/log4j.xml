@@ -38,15 +38,15 @@
 	<logger name="jdbc.audit">
 		<level value="warn" />
 	</logger>
-	
-		<logger name="jdbc.resultset">
+
+	<logger name="jdbc.resultset">
 		<level value="warn" />
 	</logger>
-	
-		<logger name="jdbc.connection">
+
+	<logger name="jdbc.connection">
 		<level value="warn" />
 	</logger>
-	
+
 	<!-- 로고 안나오게 하는 것. root 위에 작성해야한다. name 설정해둔 것들이 사라져서 짧게 나타남. -->
 
 	<!-- Root Logger -->
